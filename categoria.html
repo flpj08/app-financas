@@ -4,44 +4,88 @@
         <title>Categoria</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="css/estilo-geral.css">
     </head>
     <body ng-controller="CategoriasController">
-        <form>
-            <h1>Cadastro de Categoria</h1>
-            <label for="codigo">Codigo: </label>
-            <input id="codigo" name="codigo" type="text" ng-model="categoria.id"/>
-            <br>
-            <label for="descricao">Nome: </label>
-            <input id="nome" name="nome" type="text" ng-model="categoria.nome"/>
-            <br>
-            <label for="preco">Tipo: </label>
-            <input id="tipo" name="tipo" type="tipo" ng-model="categoria.tipo"/>   
-            <br>
-            <button ng-click="salvar(categoria)">Salvar</button>
-            <button ng-click="cancelar()">Cancelar</button>
-        </form>
-
-        <h1>Categorias</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="categoria in categorias track by $index">
-                    <td ng-dblclick="editar(categoria)">{{categoria.id}}</td>
-                    <td ng-dblclick="editar(categoria)">{{categoria.nome}}</td>
-                    <td ng-dblclick="editar(categoria)">{{categoria.tipo}}</td>
-                    <td><a href="" ng-click="editar(categoria)">[Editar]</a></td>
-                    <td><a href="" ng-click="excluir(categoria)">[Excluir]</a></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="conteiner-fluid">
+            <div class="row">
+                <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Início</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Despesas</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Receitas</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Contas Financeiras</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Categorias</a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <main class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <h1>Categorias</h1>
+                
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                      <h4 class="card-title">Nova Categoria</h4>
+                      <form>
+                          <div class="form-group">
+                            <label for="codigo">Codigo: </label>
+                            <input id="codigo" name="codigo" type="text" ng-model="categoria.id"/>
+                          </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="nome">Nome: </label>
+                            <input id="nome" name="nome" type="text" ng-model="categoria.nome"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="tipo">Tipo: </label>
+                            <input id="tipo" name="tipo" type="tipo" ng-model="categoria.tipo"/>   
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button ng-click="salvar(categoria)">Salvar</button>
+                            <button ng-click="cancelar()">Cancelar</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="categoria in categorias track by $index">
+                                <td ng-dblclick="editar(categoria)">{{categoria.id}}</td>
+                                <td ng-dblclick="editar(categoria)">{{categoria.nome}}</td>
+                                <td ng-dblclick="editar(categoria)">{{categoria.tipo}}</td>
+                                <td><a href="" ng-click="editar(categoria)">[Editar]</a></td>
+                                <td><a href="" ng-click="excluir(categoria)">[Excluir]</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
 
         <script src="js/angular.min.js"></script>
         <script src="js/categoria.js"></script>
